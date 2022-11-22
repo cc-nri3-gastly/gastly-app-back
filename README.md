@@ -21,14 +21,14 @@
 
 リクエスト
 
-- クエリパラメータ
+-   クエリパラメータ
 
 ```
 areaId   : 場所ID(int)(新橋:1、品川:2、横浜:3、...)
 personNum: 人数(int)
 ```
 
-- クエリパラメータ例
+-   クエリパラメータ例
 
 ```
 http://bizakaya.com/shops?areaId=1&personNum=10
@@ -36,7 +36,7 @@ http://bizakaya.com/shops?areaId=1&personNum=10
 
 レスポンス
 
-- ボディ
+-   ボディ
 
 ```json
 [
@@ -94,9 +94,9 @@ http://bizakaya.com/shops?areaId=1&personNum=10
 
 ### review
 
-| 項目          | 型      | 制約                           |
-| ------------- | ------- | ------------------------------ |
-| id            | integer | not null, unique               |
-| restaurant_id | integer | ref: > restaurant.id, not null |
-| rating        | integer |                                |
-| comment       | string  |                                |
+| 項目    | 型      | 制約                     |
+| ------- | ------- | ------------------------ |
+| id      | integer | not null, unique         |
+| shop_id | integer | ref: > shop.id, not null |
+| rating  | integer |                          |
+| comment | string  |                          |
