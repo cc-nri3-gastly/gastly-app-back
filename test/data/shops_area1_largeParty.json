@@ -7,7 +7,7 @@
         "smallParty": true,
         "mediumParty": false,
         "largeParty": true,
-        "ratingAverage": 4.1,
+        "ratingAverage": 4.0,
         "comments": ["おいしかったです。", "ビールの飲み放題があります。"]
     },
     {
@@ -18,7 +18,7 @@
         "smallParty": true,
         "mediumParty": false,
         "largeParty": false,
-        "ratingAverage": 4.4,
+        "ratingAverage": 4.3,
         "comments": [
             "落ち着いた雰囲気でした。",
             "4人の個室があります。",

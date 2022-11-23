@@ -1,0 +1,13 @@
+[
+    {
+        "id": 4,
+        "name": "イタリアンレストランMM",
+        "areaId": 2,
+        "url": "http://shops-mmm.jp",
+        "smallParty": false,
+        "mediumParty": true,
+        "largeParty": false,
+        "rating_average": 4.0,
+        "comments": ["パスタがおいしいです。"]
+    }
+]
