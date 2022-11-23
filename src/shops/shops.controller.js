@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const shopModel = require('./shops.model');
-const reviewModel = require('./reviews.model');
+const reviewModel = require('../reviews/reviews.model');
 
 router.get('/test', function (req, res) {
     res.json([
@@ -63,7 +63,6 @@ router.get('/', async function (req, res) {
             partySize
         );
 
-        //TODO mapでぐるぐるして詰め直す
         const shopIds = shops.map((shop) => shop.id);
         const procs = shopIds.map((shopId) =>
             reviewModel.selectByShopId(shopId)
