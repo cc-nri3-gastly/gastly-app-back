@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const shopModel = require('./shops.model');
+const reviewModel = require('./reviews.model');
 
-/* GET users listing. */
 router.get('/test', function (req, res) {
     res.json([
         {
@@ -47,12 +48,35 @@ router.get('/test', function (req, res) {
     ]);
 });
 
-router.get('/', function (req, res) {
-    res.json;
-});
+router.get('/', async function (req, res) {
+    try {
+        const areaId = parseInt(req.query.areaId);
+        const personNum = parseInt(req.query.personNum);
+        let partySize;
+        if (personNum <= 4) partySize = 'small_party';
+        else if (personNum <= 10) partySize = 'medium_party';
+        else partySize = 'large_party';
+        console.log(partySize);
 
-router.post('/', function (req, res) {
-    res.json;
+        const shops = await shopModel.selectByAreaIdAndPartySize(
+            areaId,
+            partySize
+        );
+
+        //TODO mapでぐるぐるして詰め直す
+        const shopIds = shops.map((shop) => shop.id);
+        const procs = shopIds.map((shopId) =>
+            reviewModel.selectByShopId(shopId)
+        );
+        const reviewsOfShops = await Promise.all(procs);
+        reviewsOfShops.map((reviews, i) => {
+            shops[i].comments = reviews.map((r) => r.comment);
+        });
+
+        res.status(200).json(shops);
+    } catch (err) {
+        res.status(400).json({ message: err });
+    }
 });
 
 module.exports = router;
