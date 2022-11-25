@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "居酒屋ABC",
+        "areaId": 1,
+        "url": "http://shops-abc.jp",
+        "smallParty": true,
+        "mediumParty": false,
+        "largeParty": true,
+        "ratingAverage": 4.0,
+        "comments": ["おいしかったです。", "ビールの飲み放題があります。"]
+    }
+]

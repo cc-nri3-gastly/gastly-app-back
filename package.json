@@ -1,0 +1,33 @@
+{
+    "name": "gastly-app-back",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "server": "nodemon ./bin/www",
+        "lint": "eslint --fix --ext .js .",
+        "test": "mocha test --exit && npm run lint",
+        "migrate": "knex migrate:rollback && knex migrate:latest",
+        "seed": "knex seed:run"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "dotenv": "^16.0.3",
+        "express": "~4.16.1",
+        "express-validator": "^6.14.2",
+        "http-errors": "~1.6.3",
+        "jade": "~1.11.0",
+        "knex": "^2.3.0",
+        "morgan": "~1.9.1",
+        "nodemon": "^2.0.20",
+        "pg": "^8.8.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.7",
+        "chai-http": "^4.3.0",
+        "eslint": "^8.28.0",
+        "mocha": "^10.1.0",
+        "prettier": "^2.7.1"
+    }
+}

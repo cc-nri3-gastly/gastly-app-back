@@ -1,0 +1,17 @@
+[
+    {
+        "shop_id": 2,
+        "rating": 4,
+        "comment": "落ち着いた雰囲気でした。"
+    },
+    {
+        "shop_id": 2,
+        "rating": 4,
+        "comment": "4人の個室があります。"
+    },
+    {
+        "shop_id": 2,
+        "rating": 5,
+        "comment": "部長も満足でした。"
+    }
+]
