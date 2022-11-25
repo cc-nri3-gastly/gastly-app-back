@@ -7,8 +7,8 @@ exports.seed = async function (knex) {
     await knex('area').del();
     // await knex.raw("SELECT SETVAL ('area_id_seq', 1, false)");
     await knex('area').insert([
-        { name: '大手町' },
-        { name: 'みなとみらい' },
-        { name: '木場' },
+        { id: 1, name: '大手町' },
+        { id: 2, name: 'みなとみらい' },
+        { id: 3, name: '木場' },
     ]);
 };

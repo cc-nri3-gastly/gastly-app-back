@@ -14,7 +14,7 @@ exports.seed = async function (knex) {
         {
             shop_id: 1,
             rating: 4,
-            comment: 'ビールの飲み放題があります。',
+            comment: 'ワインの飲み放題があります。',
         },
         {
             shop_id: 2,
@@ -45,6 +45,26 @@ exports.seed = async function (knex) {
             shop_id: 4,
             rating: 4,
             comment: 'パスタがおいしいです。',
+        },
+        {
+            shop_id: 5,
+            rating: 4,
+            comment: '特にお刺身がおすすめ。',
+        },
+        {
+            shop_id: 5,
+            rating: 5,
+            comment: '海鮮丼が美味しい！出しが効いてる',
+        },
+        {
+            shop_id: 6,
+            rating: 4,
+            comment: 'コスパが良い。',
+        },
+        {
+            shop_id: 6,
+            rating: 3,
+            comment: 'お昼の定食のほうが美味しいかも',
         },
     ]);
 };

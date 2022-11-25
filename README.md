@@ -17,21 +17,32 @@
 ### 1. 条件を指定してお店候補を取得する
 
 エンドポイント：
-`/shops`
+POST `/shops`
 
 リクエスト
 
 -   クエリパラメータ
 
 ```
-areaId   : 場所ID(int)(新橋:1、品川:2、横浜:3、...)
-personNum: 人数(int)
+なし
+```
+
+-   リクエスト body
+
+```
+{
+  areaId     : 場所ID(int)(新橋:1、品川:2、横浜:3、...)
+  purposeId  : 目的ID(int)(歓迎会:1、送迎会:2、...)
+  personNum: 人数(int)
+  participantsId:[ id01,id02,... ](参加者ID)
+}
+
 ```
 
 -   クエリパラメータ例
 
 ```
-http://bizakaya.com/shops?areaId=1&personNum=10
+http://bizakaya.com/shops
 ```
 
 レスポンス
@@ -41,19 +52,21 @@ http://bizakaya.com/shops?areaId=1&personNum=10
 ```json
 [
   {
-    "id": "id",
-    "name": "店名",
+    "shopId": "お店id",
+    "shopName": "店名",
     "areaId": "場所ID",
     "url": "(食べログとかの)URL",
-    "smallParty":"小規模利用実績",
-    "mediumParty":"中規模利用実績",
-    "largeParty":"大規模利用実績",
     "ratingAverage": "評価(平均)",
     "comments": [
       "comment1",
       "comment2",
       "...",
     ],
+    "matchedTags":[
+      "リクエストにマッチしたタグ情報",
+      "例）喫煙",
+      "..."
+    ]
   },
   {
     "ここに2軒目のデータ"
@@ -74,16 +87,16 @@ http://bizakaya.com/shops?areaId=1&personNum=10
 
 ### shop
 
-| 項目           | 型      | 制約                     |
-| -------------- | ------- | ------------------------ |
-| id             | integer | not null, unique         |
-| name           | string  | not null                 |
-| area_id        | integer | ref: > area.id, not null |
-| url            | string  |                          |
-| small_party    | boolean | not null                 |
-| medium_party   | boolean | not null                 |
-| large_party    | boolean | not null                 |
-| rating_average | float   |                          |
+| 項目         | 型      | 制約                     |
+| ------------ | ------- | ------------------------ | ----------- |
+| id           | integer | not null, unique         |
+| name         | string  | not null                 |
+| area_id      | integer | ref: > area.id, not null |
+| url          | string  |                          |
+| small_party  | boolean | not null                 | 人数：0~10  |
+| medium_party | boolean | not null                 | 人数：10~20 |
+| large_party  | boolean | not null                 | 人数：20~   |
+| tags         | text[]  |                          |
 
 ### area
 
@@ -100,3 +113,11 @@ http://bizakaya.com/shops?areaId=1&personNum=10
 | shop_id | integer | ref: > shop.id, not null |
 | rating  | integer |                          |
 | comment | string  |                          |
+
+### participant
+
+| 項目 | 型      | 制約             |
+| ---- | ------- | ---------------- |
+| id   | integer | not null, unique |
+| name | string  | not null         |
+| tags | text[]  |                  |
