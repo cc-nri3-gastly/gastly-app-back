@@ -14,7 +14,7 @@ exports.seed = async function (knex) {
         { id: 6, name: '長嶋エキスパート' },
         { id: 7, name: '合田', tags: '{"肉"}' },
         { id: 8, name: '骨川', tags: '{"きれい目"}' },
-        { id: 9, name: '野比', tags: '{"居酒屋"}' },
+        { id: 9, name: '野比', tags: '{"居酒屋","個室あり"}' },
         { id: 10, name: '源' },
     ]);
 };

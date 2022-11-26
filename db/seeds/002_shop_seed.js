@@ -14,7 +14,7 @@ exports.seed = async function (knex) {
             small_party: true,
             medium_party: true,
             large_party: true,
-            tags: '{"イタリアン","ワイン","個室あり",}',
+            tags: '{"イタリアン","ワイン","個室あり"}',
         },
         {
             name: '本家あべや 東京駅 北町酒場店',
@@ -24,7 +24,7 @@ exports.seed = async function (knex) {
             small_party: true,
             medium_party: true,
             large_party: true,
-            tags: '{"焼き鳥","日本酒","貸切可能",}',
+            tags: '{"焼き鳥","日本酒","貸切可能"}',
         },
         {
             name: '七代目 卯兵衛 北町ダイニング ',
@@ -54,7 +54,7 @@ exports.seed = async function (knex) {
             small_party: true,
             medium_party: true,
             large_party: false,
-            tags: '{"魚介料理・海鮮料理"、"居酒屋"、"日本酒バー", "掘りごたつ", "テラス", "個室あり"}',
+            tags: '{"魚介料理・海鮮料理","居酒屋","日本酒バー","掘りごたつ","テラス","個室あり"}',
         },
         {
             name: '上海料理佳樹園',
@@ -64,7 +64,7 @@ exports.seed = async function (knex) {
             small_party: true,
             medium_party: true,
             large_party: true,
-            tags: '{"中華"、"きれい目"、"激辛",}',
+            tags: '{"中華","きれい目","激辛"}',
         },
     ]);
 };
