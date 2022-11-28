@@ -77,9 +77,47 @@ http://bizakaya.com/shops
 ]
 ```
 
-### 2. 利用したお店の評価などを登録する
+### 2. 参加者の趣味・嗜好を登録する
 
-### 3. 良かったお店を新たに登録する
+エンドポイント：
+POST `/users`
+
+リクエスト
+
+-   クエリパラメータ
+
+```
+なし
+```
+
+-   リクエスト body
+
+```
+{
+  name     : 氏名（文字列）
+  tags  : ['文字列の配列',...]
+  allergy: アレルギー（文字列）
+}
+
+```
+
+-   クエリパラメータ例
+
+```
+http://bizakaya.com/users
+```
+
+レスポンス
+
+-   ボディ
+
+```
+なし
+```
+
+### 3. 利用したお店の評価などを登録する
+
+### 4. 良かったお店を新たに登録する
 
 ---
 
@@ -121,3 +159,5 @@ http://bizakaya.com/shops
 | id   | integer | not null, unique |
 | name | string  | not null         |
 | tags | text[]  |                  |
+| allergy | string  |                  |
+
