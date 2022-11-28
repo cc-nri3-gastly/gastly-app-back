@@ -84,9 +84,17 @@ router.get('/', async function (req, res) {
 router.post('/', async function (req, res) {
     try {
         console.log(req.body);
-        const areaId = parseInt(req.body.areaId);
-        const purposeId = parseInt(req.body.purposeId);
-        const personNum = parseInt(req.body.personNum);
+        //const areaId = parseInt(req.body.areaId);
+        //const purposeId = parseInt(req.body.purposeId);
+        //const personNum = parseInt(req.body.personNum);
+        const areaId = req.body.areaId;
+        const purposeId = req.body.purposeId;
+        const personNum = req.body.personNum;
+
+        console.log(areaId);
+        console.log(purposeId);
+        console.log(personNum);
+
         let participantIds = [];
         if (req.body.participantIds != undefined) {
             participantIds = req.body.participantIds;
