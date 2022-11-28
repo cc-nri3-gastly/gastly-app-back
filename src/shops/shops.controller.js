@@ -87,8 +87,10 @@ router.post('/', async function (req, res) {
         const areaId = parseInt(req.body.areaId);
         const purposeId = parseInt(req.body.purposeId);
         const personNum = parseInt(req.body.personNum);
-        const participantIds = req.body.participantIds;
-
+        let participantIds = [];
+        if (req.body.participantIds != undefined) {
+            participantIds = req.body.participantIds;
+        }
         // 会場サイズを算出
         let partySize;
         if (personNum <= 10) {

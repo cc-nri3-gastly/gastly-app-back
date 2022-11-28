@@ -12,7 +12,7 @@ const knex = require('knex')(config);
 //data
 //const shops_area1_largeParty = require('./data/shops_area1_largeParty.json');
 //const shops_area1_smallParty = require('./data/shops_area1_smallParty.json');
-const shops_post_01 = require('./data/shops_post_01.json');
+//const shops_post_01 = require('./data/shops_post_01.json');
 
 //describe
 const server = app;
@@ -44,7 +44,7 @@ describe('BizakayaAPI -SHOP', () => {
                 areaId: '1',
                 purposeId: '1',
                 personNum: '20',
-                participantIds: [],
+                participantIds: [7, 8, 9],
             };
 
             const res = await request.post('/shops').send(reqBody);
