@@ -1,0 +1,45 @@
+[
+    {
+        "shopId": 1,
+        "shopName": "イタリアン食堂酒場 大手町厨房 ",
+        "areaId": 1,
+        "url": "https://tabelog.com/tokyo/A1302/A130201/13036300/",
+        "tags": "{\"イタリアン\",\"ワイン\",\"個室あり\"}",
+        "rationgAverage": 4,
+        "comments": ["おいしかったです。", "ワインの飲み放題があります。"],
+        "matchedTags": ["個室あり"]
+    },
+    {
+        "shopId": 4,
+        "shopName": "サムギョプサルと野菜　いふう 丸の内店",
+        "areaId": 1,
+        "url": "https://tabelog.com/tokyo/A1302/A130201/13031409/",
+        "tags": "{\"韓国\",\"個室あり\",\"きれい目\"}",
+        "rationgAverage": 4,
+        "comments": ["パスタがおいしいです。"],
+        "matchedTags": ["個室あり", "きれい目"]
+    },
+    {
+        "shopId": 5,
+        "shopName": "北海道 炉端 えぞ羅",
+        "areaId": 1,
+        "url": "https://tabelog.com/tokyo/A1302/A130201/13260659/",
+        "tags": "{\"魚介料理・海鮮料理\",\"居酒屋\",\"日本酒バー\",\"掘りごたつ\",\"テラス\",\"個室あり\"}",
+        "rationgAverage": 4.5,
+        "comments": [
+            "特にお刺身がおすすめ。",
+            "海鮮丼が美味しい！出しが効いてる"
+        ],
+        "matchedTags": ["居酒屋", "個室あり"]
+    },
+    {
+        "shopId": 6,
+        "shopName": "上海料理佳樹園",
+        "areaId": 1,
+        "url": "https://tabelog.com/tokyo/A1302/A130201/13095593/",
+        "tags": "{\"中華\",\"きれい目\",\"激辛\"}",
+        "rationgAverage": 3.5,
+        "comments": ["コスパが良い。", "お昼の定食のほうが美味しいかも"],
+        "matchedTags": ["きれい目"]
+    }
+]

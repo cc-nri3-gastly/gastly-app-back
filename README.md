@@ -87,16 +87,16 @@ http://bizakaya.com/shops
 
 ### shop
 
-| 項目         | 型      | 制約                     |
+| 項目         | 型      | 制約                     | 備考        |
 | ------------ | ------- | ------------------------ | ----------- |
-| id           | integer | not null, unique         |
-| name         | string  | not null                 |
-| area_id      | integer | ref: > area.id, not null |
-| url          | string  |                          |
+| id           | integer | not null, unique         |             |
+| name         | string  | not null                 |             |
+| area_id      | integer | ref: > area.id, not null |             |
+| url          | string  |                          |             |
 | small_party  | boolean | not null                 | 人数：0~10  |
 | medium_party | boolean | not null                 | 人数：10~20 |
 | large_party  | boolean | not null                 | 人数：20~   |
-| tags         | text[]  |                          |
+| tags         | text[]  |                          |             |
 
 ### area
 

@@ -22,6 +22,24 @@ module.exports = {
             .whereRaw(`${partySize}=true`);
     },
 
+    selectByAreaIdAndPurposeIdAndPartySize(areaId, purposeId, partySize, tags) {
+        return knex
+            .select({
+                shopId: 'id',
+                shopName: 'name',
+                areaId: 'area_id',
+                url: 'url',
+                tags: 'tags',
+            })
+            .from(SHOP_TABLE)
+            .where({
+                area_id: areaId,
+                purpose_id: purposeId,
+            })
+            .whereRaw(`${partySize}=true`)
+            .whereRaw(`tags ~ Any(array[${tags}])`);
+    },
+
     // create(shop) {
     //     return knex('shop').insert(shop);
     // },

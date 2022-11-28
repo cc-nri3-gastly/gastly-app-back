@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 const shopModel = require('./shops.model');
 const reviewModel = require('../reviews/reviews.model');
+const participantsModel = require('../participants/participants.model');
+
+const { parse } = require('postgres-array');
 
 router.get('/test', function (req, res) {
     res.json([
@@ -74,6 +77,76 @@ router.get('/', async function (req, res) {
 
         res.status(200).json(shops);
     } catch (err) {
+        res.status(400).json({ message: err });
+    }
+});
+
+router.post('/', async function (req, res) {
+    try {
+        console.log(req.body);
+        const areaId = parseInt(req.body.areaId);
+        const purposeId = parseInt(req.body.purposeId);
+        const personNum = parseInt(req.body.personNum);
+        const participantIds = req.body.participantIds;
+
+        // 会場サイズを算出
+        let partySize;
+        if (personNum <= 10) {
+            partySize = 'small_party';
+        } else if (personNum <= 20) {
+            partySize = 'medium_party';
+        } else {
+            partySize = 'large_party';
+        }
+
+        console.log(`partySize = ${partySize}`);
+
+        // 参加者情報からタグ情報を文字列として一覧化
+        const participants = await participantsModel.selectByIds(
+            participantIds
+        );
+        let participantTags = '';
+        participants.forEach((obj) => {
+            parse(obj['tags'], (value) => value).forEach(
+                (v) => (participantTags += `'${v}',`)
+            );
+        });
+        participantTags = participantTags.slice(0, -1);
+
+        console.log(participantTags);
+
+        // 検索条件に一致した店を検索
+        const shops = await shopModel.selectByAreaIdAndPurposeIdAndPartySize(
+            areaId,
+            purposeId,
+            partySize,
+            participantTags
+        );
+
+        for (let shop of shops) {
+            //ratingAverage,comments を追加
+            await reviewModel.selectByShopId(shop['shopId']).then((reviews) => {
+                shop['rationgAverage'] =
+                    reviews.reduce((prev, cur) => {
+                        return prev + cur['rating'];
+                    }, 0) / reviews.length;
+                console.log(shop['rationgAverage']);
+
+                shop['comments'] = reviews.map((obj) => {
+                    return obj['comment'];
+                });
+            });
+
+            //matchedTagsを追加
+            const tagsArray = participantTags.replace(/'/g, '').split(',');
+            shop['matchedTags'] = parse(shop['tags']).filter((v) => {
+                return tagsArray.includes(v);
+            });
+        }
+
+        res.status(200).json(shops);
+    } catch (err) {
+        console.log(err);
         res.status(400).json({ message: err });
     }
 });
