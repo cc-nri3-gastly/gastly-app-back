@@ -37,8 +37,7 @@ module.exports = {
                 purpose_id: purposeId,
             })
             .whereRaw(`${partySize}=true`);
-
-        if (Array.isArray(tags) && tags.length > 0) {
+        if (tags) {
             query.whereRaw(`tags ~ Any(array[${tags}])`);
         }
         return query;
