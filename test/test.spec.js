@@ -43,8 +43,8 @@ describe('BizakayaAPI -SHOP', () => {
             const reqBody = {
                 areaId: '1',
                 purposeId: '1',
-                personNum: '20',
-                participantIds: [7, 8, 9],
+                personNum: '3',
+                participantIds: [],
             };
 
             const res = await request.post('/shops').send(reqBody);
