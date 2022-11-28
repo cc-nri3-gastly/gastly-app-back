@@ -7,6 +7,7 @@ exports.up = async function (knex) {
         table.increments('id').primary();
         table.string('name').notNullable();
         table.text('tags', []);
+        table.string('allergy');
     });
 };
 
