@@ -23,7 +23,7 @@ module.exports = {
     },
 
     selectByAreaIdAndPurposeIdAndPartySize(areaId, purposeId, partySize, tags) {
-        return knex
+        let query = knex
             .select({
                 shopId: 'id',
                 shopName: 'name',
@@ -36,8 +36,12 @@ module.exports = {
                 area_id: areaId,
                 purpose_id: purposeId,
             })
-            .whereRaw(`${partySize}=true`)
-            .whereRaw(`tags ~ Any(array[${tags}])`);
+            .whereRaw(`${partySize}=true`);
+
+        if (Array.isArray(tags) && tags.length > 0) {
+            query.whereRaw(`tags ~ Any(array[${tags}])`);
+        }
+        return query;
     },
 
     // create(shop) {
