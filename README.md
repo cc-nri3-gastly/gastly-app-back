@@ -80,7 +80,7 @@ http://bizakaya.com/shops
 ### 2. 参加者の趣味・嗜好を登録する
 
 エンドポイント：
-POST `/users`
+POST `/participants`
 
 リクエスト
 
@@ -154,10 +154,9 @@ http://bizakaya.com/users
 
 ### participant
 
-| 項目 | 型      | 制約             |
-| ---- | ------- | ---------------- |
-| id   | integer | not null, unique |
-| name | string  | not null         |
-| tags | text[]  |                  |
+| 項目    | 型      | 制約             |
+| ------- | ------- | ---------------- |
+| id      | integer | not null, unique |
+| name    | string  | not null         |
+| tags    | text[]  |                  |
 | allergy | string  |                  |
-

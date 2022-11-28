@@ -144,7 +144,37 @@ router.post('/', async function (req, res) {
             });
         }
 
-        res.status(200).json(shops);
+        //matchedTags配列の要素の長さを比較して、1番多いものを選定する
+
+        let returnShops = [];
+        const maxTagsShop = shops.reduce(
+            (prev, cur) =>
+                prev['matchedTags'].length > cur['matchedTags'].length
+                    ? prev
+                    : cur,
+            shops[0]
+        );
+
+        returnShops.push(maxTagsShop);
+
+        //shopsからmaxTagsShopを取り除く
+        shops.splice(shops.indexOf(maxTagsShop), 1);
+
+        //shopsから2件をランダムに抽出する
+        //変数を宣言しておく
+        let m;
+        let n;
+        //２つが同じじゃなくなるまで繰り返せ
+        while (m == n) {
+            m = Math.ceil(Math.random() * shops.length - 1);
+            n = Math.ceil(Math.random() * shops.length - 1);
+        }
+        returnShops.push(shops[m]);
+        returnShops.push(shops[n]);
+
+        console.log('=====結果！！！！！！！！！！======');
+        console.log(returnShops);
+        res.status(200).json(returnShops);
     } catch (err) {
         console.log(err);
         res.status(400).json({ message: err });
